@@ -45,9 +45,7 @@ neuronParams = {
     'e_rev_I'   : -75.0, # mV
     'v_rest'    : -75.0, # mV
     'v_thresh'  : -55.0, # mV
-    'g_leak'    :  20.0, # nS  -> tau_mem = 0.2nF / 20nS = 10ms
-    'tau_syn_E' :   5.0, # ms
-    'tau_syn_I' :  10.0, # ms
+    'g_leak'    :  20.0  # nS  -> tau_mem = 0.2nF / 20nS = 10ms
 }
 
 stimParams = {
