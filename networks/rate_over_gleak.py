@@ -4,22 +4,22 @@ import pyNN.hardware.stage1 as pynn
 import numpy as np
 import matplotlib.pyplot as plt
 
-noStims      = 64                 # number of stimuli generated on the host computer
-noNeurons    = 32                 # number of hardware neurons
-noPreNeurons = 16                 # number for stimuli connected to each neuron
-weight       = 7.0                # synaptic weight in digital values
-rateStim     = 10.0               # rate of each stimulus in 1/s
-runtime      = 10 * 1000.0        # runtime in biological time domain in ms
-gLeakList    = np.arange(2,251,8) # hardware range with calibTauMem turned off: [2,250] micro siemens
+noStims   = 64                 # number of stimuli generated on the host computer
+noNeurons = 32                 # number of hardware neurons
+noInputs  = 16                 # number for stimuli connected to each neuron
+weight    = 7.0                # synaptic weight in digital values
+rateStim  = 10.0               # rate of each stimulus in 1/s
+runtime   = 10 * 1000.0        # runtime in biological time domain in ms
+gLeakList = np.arange(2,251,8) # hardware range with calibTauMem turned off: [2,250] micro siemens
 
 resultCollector = []
 
-pynn.setup(calibTauMem=False) #turn off calib of membrane time constant tau_mem
+pynn.setup(calibTauMem=False) #turn off calibration of membrane time constant tau_mem
 
 #build network
 stimuli = pynn.Population(noStims, pynn.SpikeSourcePoisson, {'start': 0, 'duration': runtime, 'rate': rateStim})
 neurons = pynn.Population(noNeurons, pynn.IF_facets_hardware1)
-pynn.Projection(stimuli, neurons, pynn.FixedNumberPreConnector(noPreNeurons, weights=weight * pynn.minExcWeight()), target='excitatory')
+pynn.Projection(stimuli, neurons, pynn.FixedNumberPreConnector(noInputs, weights=weight * pynn.minExcWeight()), target='excitatory')
 neurons.record()
 
 #sweep over g_leak values, emulate network and record spikes
