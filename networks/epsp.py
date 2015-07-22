@@ -4,7 +4,7 @@ import pyNN.hardware.stage1 as pynn
 import numpy as np
 import matplotlib.pyplot as plt
 
-weight             = 15.0        # synaptic weight in digital values
+weight             = 7.0        # synaptic weight in digital values
 runtime            = 10 * 1000.0 # runtime in biological time domain in ms
 durationInterval   = 200.0       # interval between input spikes in ms
 neuronIndex        = 42          # choose neuron on chip in range(384)
@@ -26,7 +26,7 @@ prj = pynn.Projection(stimuli, neurons, pynn.AllToAllConnector(weights=weight * 
 
 #modify properties of synapse driver
 print 'Range of calibration factors of drvifall for excitatory connections', prj.getDrvifallFactorsRange('exc')
-prj.setDrvifallFactors([0.02])
+prj.setDrvifallFactors([0.8])
 #prj.setDrvioutFactors([1.0])
 
 ##run network
