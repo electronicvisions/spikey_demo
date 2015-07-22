@@ -31,7 +31,7 @@ weightStimExcExc = 10 * pynn.minExcWeight()
 weightStimExcInh = 10 * pynn.minExcWeight()
 weightExcExc = 5 * pynn.minExcWeight()
 weightExcInh = 10 * pynn.minExcWeight()
-weightInhExc = 15 * pynn.minInhWeight()
+weightInhExc = 7 * pynn.minInhWeight()
 
 # kick starter
 stimSpikes = np.array([100.0])
@@ -63,7 +63,7 @@ pynn.record_v(popCollector['exc'][0][0], '')
 
 # hack to elongate refractory period of all neurons
 # will be configurable via neuron parameters, soon
-pynn.hardware.hwa.setIcb(0.1)
+pynn.hardware.hwa.setIcb(0.02)
 
 pynn.run(runtime)
 

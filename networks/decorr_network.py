@@ -17,15 +17,16 @@ mpl.use('Agg')
 import pyNN.hardware.stage1 as pynn
 import numpy as np
 
+pynn.setup()
+
 # set resting potential over spiking threshold
 runtime = 1000.0 #ms
 popSize = 192
+weight = 7.0 * pynn.minExcWeight()
 neuronParams = {'v_rest': -40.0}
 
-pynn.setup()
-
 neurons = pynn.Population(popSize, pynn.IF_facets_hardware1, neuronParams)
-pynn.Projection(neurons, neurons, pynn.FixedNumberPreConnector(15, weights=4*pynn.minExcWeight()), target='inhibitory')
+pynn.Projection(neurons, neurons, pynn.FixedNumberPreConnector(15, weights=weight), target='inhibitory')
 neurons.record()
 
 pynn.run(runtime)
