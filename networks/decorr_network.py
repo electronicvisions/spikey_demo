@@ -14,7 +14,7 @@ arXiv:1411.7916 [q-bio.NC].
 import matplotlib as mpl
 mpl.use('Agg')
 
-import pyNN.hardware.stage1 as pynn
+import pyNN.hardware.spikey as pynn
 import numpy as np
 
 pynn.setup()

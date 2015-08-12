@@ -11,7 +11,7 @@ For low input rates the synaptic efficacy recovers.
 import matplotlib as mpl
 mpl.use('Agg')
 
-import pyNN.hardware.stage1 as pynn
+import pyNN.hardware.spikey as pynn
 import numpy as np
 
 # row and column of synapse

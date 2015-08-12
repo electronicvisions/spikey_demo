@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import pyNN.hardware.stage1 as pynn
+import pyNN.hardware.spikey as pynn
 import numpy as np
 import matplotlib.pyplot as plt
 

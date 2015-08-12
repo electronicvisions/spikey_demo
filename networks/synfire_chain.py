@@ -13,7 +13,7 @@ Front. Neurosci. 7 (11).
 import matplotlib as mpl
 mpl.use('Agg')
 
-import pyNN.hardware.stage1 as pynn
+import pyNN.hardware.spikey as pynn
 import numpy as np
 
 runtime = 500.0 # ms

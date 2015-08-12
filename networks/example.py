@@ -63,7 +63,7 @@ import matplotlib as mpl
 mpl.use('Agg')
 
 # load PyNN interface for the Spikey neuromorphic hardware
-import pyNN.hardware.stage1 as pynn
+import pyNN.hardware.spikey as pynn
 
 # necessary setup
 pynn.setup()

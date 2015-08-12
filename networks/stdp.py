@@ -16,7 +16,7 @@ Front. Neurosci. 6 (90).
 arXiv:1201.6255 [q-bio.NC]
 '''
 
-import pyNN.hardware.stage1 as pynn
+import pyNN.hardware.spikey as pynn
 import numpy as np
 
 column               = 4     # column of plastic synapse
