@@ -1,1 +1,9 @@
 *.swp
+*.pyc
+build/
+.symwaf2ic.*
+wscript
+bin/
+lib/
+.waf*/
+.symwaf2ic/
