@@ -8,3 +8,6 @@ lib/
 .waf*/
 .symwaf2ic/
 logfile.txt
+*.png
+*spiketrain.in
+*spikeyconfig.out
