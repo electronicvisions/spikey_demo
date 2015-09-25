@@ -35,6 +35,9 @@ spikes = neurons.getSpikes()
 
 pynn.end()
 
+# save data
+np.savetxt('decorr_network_result.dat', spikes)
+
 # visualize
 print 'mean firing rate:', round(len(spikes) / runtime / popSize * 1000.0, 1), '1/s'
 

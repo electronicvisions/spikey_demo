@@ -1,8 +1,7 @@
 import numpy as np
-runtime = 10000.0 #10s
-noSpikes = 1000
-noNeurons = 100
-spikes = np.vstack((np.random.random_integers(0, noNeurons - 1, noSpikes), np.random.random(1000) * runtime)).T
+
+runtime = 1000.0
+spikes = np.loadtxt('../networks/decorr_network_result.dat')
 
 uniqueIDs= np.unique(spikes[:,0])
 
@@ -43,10 +42,13 @@ ax.set_ylabel('Coefficient of variation')
 
 # plot histogram of correlation coefficients
 ax = fig.add_subplot(212)
-hist, edges = np.histogram(correlationList, bins=100, range=[0, 1.0])
+#xLim = [0, np.max(correlationList)]
+xLim = [0, 0.3]
+hist, edges = np.histogram(correlationList, bins=25, range=xLim)
 hist = 1.0 * hist / len(correlationList) # calculate probability
 ax.bar(edges[:-1], hist, width=abs(edges[1] - edges[0]), fc='b', ec='b', lw=0)
+ax.set_xlim(xLim)
 ax.set_xlabel('Correlation coefficient')
-ax.set_ylabel('#')
+ax.set_ylabel('p')
 
 plt.savefig('result.png')
