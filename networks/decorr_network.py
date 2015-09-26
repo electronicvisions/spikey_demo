@@ -36,11 +36,11 @@ spikes = neurons.getSpikes()
 pynn.end()
 
 # save data
-np.savetxt('decorr_network_result.dat', spikes)
+print 'Saving data'
+np.savetxt('spikes.dat', spikes)
 
 # visualize
-print 'mean firing rate:', round(len(spikes) / runtime / popSize * 1000.0, 1), '1/s'
-
+print 'Plotting data'
 import matplotlib.pyplot as plt
 
 color = 'k'
@@ -51,4 +51,4 @@ plt.xlim(0, runtime)
 plt.xlabel('time (ms)')
 plt.ylabel('neuron ID')
 plt.ylim(-0.5, popSize - 0.5) 
-plt.savefig('decorr_network.png')
+plt.savefig('raster_plot.png')
