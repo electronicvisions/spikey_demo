@@ -13,8 +13,10 @@ from optparse import OptionParser
 
 # parse options
 parser = OptionParser()
-parser.add_option('--file', dest='filename', help='file name of spikes data')
+parser.add_option('--file', dest='filename', help='Filename of spikes data')
 (options, args) = parser.parse_args()
+if options.filename is None:
+    parser.error('Filename not given')
 spikes = np.loadtxt(options.filename)
 
 # analysis
