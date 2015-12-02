@@ -2,14 +2,12 @@ import pyNN.nest as pynn
 import numpy as np
 
 # This example script uses the synapse model "stdp_facetshw_synapse_hom" of NEST that implements features of STDP synapses on the neuromorphic chip Spikey.
-# The synapse model implements the separation of
-# - local measurement and accumulation of correlations between pre- and postsynaptic spikes
-# - and a global mechanism that sequentially evaluates these accumulated correlations and updates the synaptic weight.
-# Additionally the synaptic weight is discretized to 16 values (4-bit resolution) and the reduced symmetric nearest-neighbor spike pairing scheme is used (see [1]).
-# Parameter variations (fixed-pattern noise) are not considered, yet, but can be easily implemented by distributing the thresholds for the evaluation of the charge on the capacitors.
-# For the network setup, see section 6.3 in [1]. Here, only a single neuron is used to trigger the postsynaptic spike.
+# Please see the FAQ of the guidebook [1] for details.
+# For the network setup, see section 6.3 in [2]. Here, only a single neuron is used to trigger the postsynaptic spike.
+# Tested with NEST 2.2.1 and PyNN 0.7.5.
 #
-# [1] Pfeil, T., Potjans, T. C., Schrader, S., Potjans, W., Schemmel, J., Diesmann, M., & Meier, K. (2012).
+# [1] https://github.com/electronicvisions/hbp-sp9-guidebook.git
+# [2] Pfeil, T., Potjans, T. C., Schrader, S., Potjans, W., Schemmel, J., Diesmann, M., & Meier, K. (2012).
 #     Is a 4-bit synaptic weight resolution enough? - 
 #     constraints on enabling spike-timing dependent plasticity in neuromorphic hardware.
 #     Front. Neurosci. 6 (90).
