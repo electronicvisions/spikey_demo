@@ -1,6 +1,6 @@
 pushd ./
 
-if [ "$PYNN_HW_PATH" == "" ] || [ "$SPIKEYHALPATH" == "" ]; then
+if [ "$PYNN_HW_PATH" = "" ] || [ "$SPIKEYHALPATH" = "" ]; then
   echo "environment variables not set"
   exit 1
 fi
@@ -32,7 +32,7 @@ else
   SERIAL=$(lsusb -v -d 04b4:1003 | grep iSerial | awk '{print $3}')
   for CONFIGFILE in $(find ./ -iname "*.cfg"); do
     SERIALTEMP=$(head -1 $CONFIGFILE);
-    if [ $SERIALTEMP == $SERIAL ]; then
+    if [ $SERIALTEMP = $SERIAL ]; then
       SERIAL=$(sed '1!d' $CONFIGFILE)
       BOARD=$(sed '2!d' $CONFIGFILE)
     fi
