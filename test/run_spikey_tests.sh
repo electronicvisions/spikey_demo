@@ -21,16 +21,16 @@ nosetests test_empty_exp.py || true
 cd $PROJECTPATH/bin
 echo "starting ADC tests"
 #get config for station
-if [ -f ~/my_stage1_station ]; then
-  echo "loading station config according to my_stage1_station file"
-  STATION=$(cat ~/my_stage1_station)
-  SERIAL=$(sed '1!d' $SPIKEYHALPATH/$STATION.cfg)
-  BOARD=$(sed '2!d' $SPIKEYHALPATH/$STATION.cfg)
+if [ "$MY_STAGE1_STATION" != "" ]; then
+  echo "loading station config according to environment variable MY_STAGE1_STATION"
+  STATION=$MY_STAGE1_STATION
+  SERIAL=$(sed '1!d' $SPIKEYHALPATH/config/$STATION.cfg)
+  BOARD=$(sed '2!d' $SPIKEYHALPATH/config/$STATION.cfg)
 else
   echo "loading station config according to connected USB device"
   cd $SPIKEYHALPATH
   SERIAL=$(lsusb -v -d 04b4:1003 | grep iSerial | awk '{print $3}')
-  for CONFIGFILE in $(find ./ -iname "*.cfg"); do
+  for CONFIGFILE in $(find ./config -iname "*.cfg"); do
     SERIALTEMP=$(head -1 $CONFIGFILE);
     if [ $SERIALTEMP = $SERIAL ]; then
       SERIAL=$(sed '1!d' $CONFIGFILE)
