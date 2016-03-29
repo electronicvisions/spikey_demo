@@ -9,9 +9,11 @@ cd $SPIKEYHALPATH
 cd ..
 PROJECTPATH=$(pwd -P)
 
-cd $PYNN_HW_PATH
-cd ../../../test/spikey
-PYNN_HW_PATH_TEST=$(pwd -P)
+if [ "$PYNN_HW_PATH_TEST" = "" ]; then
+  cd $PYNN_HW_PATH
+  cd ../../../test/spikey
+  PYNN_HW_PATH_TEST=$(pwd -P)
+fi
 
 #TP (19.05.2015): next two lines are required, otherwise following ADC test will fail
 #remove when bug fixed, see issue #1718
